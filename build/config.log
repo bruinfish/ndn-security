@@ -1,0 +1,10 @@
+# project  configured on Mon Jun 24 15:27:13 2013 by
+# waf 1.7.11 (abi 98, python 20705f0 on darwin)
+# using ./waf configure
+#
+----------------------------------------
+Setting top to
+/Users/yuyingdi/Develop/ndn-security
+----------------------------------------
+Setting out to
+/Users/yuyingdi/Develop/ndn-security/build
