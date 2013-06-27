@@ -1,4 +1,4 @@
-# project  configured on Mon Jun 24 15:27:13 2013 by
+# project ndnsec (0.1) configured on Wed Jun 26 22:43:59 2013 by
 # waf 1.7.11 (abi 98, python 20705f0 on darwin)
 # using ./waf configure
 #
@@ -8,3 +8,300 @@ Setting top to
 ----------------------------------------
 Setting out to
 /Users/yuyingdi/Develop/ndn-security/build
+----------------------------------------
+Checking for 'gcc' (c compiler)
+find program=['gcc', 'cc'] paths=['/opt/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='CC' -> '/usr/bin/gcc'
+find program=['ar'] paths=['/opt/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='AR' -> '/opt/local/bin/ar'
+/usr/bin/gcc
+----------------------------------------
+Checking for 'g++' (c++ compiler)
+find program=['g++', 'c++'] paths='' var='CXX' -> 'clang++'
+(tool ar is already loaded, skipping)
+clang++
+----------------------------------------
+Checking allowed flags for c++ compiler
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/test.cpp -> build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/test.cpp.1.o
+[0m
+['clang++', '-O0', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/test.cpp.1.o -> build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/testprog']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_7315e1822a0aba000ae9bcd58f617545/test.cpp -> build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/test.cpp.1.o
+[0m
+['clang++', '-Wall', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/test.cpp.1.o -> build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/testprog']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/test.cpp -> build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/test.cpp.1.o
+[0m
+['clang++', '-Wno-unused-variable', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/test.cpp.1.o -> build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/testprog']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_c9979a261594412ace7b7eb669820666/test.cpp -> build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/test.cpp.1.o
+[0m
+['clang++', '-g3', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/test.cpp.1.o -> build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/testprog']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_1f1c317658a7d162e5daca15373be461/test.cpp -> build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/test.cpp.1.o
+[0m
+['clang++', '-Wno-unused-private-field', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/test.cpp.1.o -> build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/testprog']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/test.cpp -> build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/test.cpp.1.o
+[0m
+['clang++', '-fcolor-diagnostics', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/test.cpp.1.o -> build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/testprog']
+==>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/test.cpp -> build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/test.cpp.1.o
+[0m
+['clang++', '-Qunused-arguments', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/test.cpp.1.o -> build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/testprog']
+-O0 -Wall -Wno-unused-variable -g3 -Wno-unused-private-field -fcolor-diagnostics -Qunused-arguments
+----------------------------------------
+Checking for framework Foundation
+==>
+#include <Foundation/Foundation.h>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/test.mm -> build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/test.mm.1.o
+[0m
+['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '../test.mm', '-c', '-o', 'test.mm.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/test.mm.1.o -> build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/testprog
+[0m
+['clang++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/testprog', '-framework', 'Foundation']
+yes
+----------------------------------------
+Checking for framework AppKit
+==>
+#include <AppKit/AppKit.h>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/test.mm -> build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/test.mm.1.o
+[0m
+['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '../test.mm', '-c', '-o', 'test.mm.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/test.mm.1.o -> build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/testprog
+[0m
+['clang++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/testprog', '-framework', 'AppKit']
+yes
+----------------------------------------
+Checking for framework Security
+==>
+#include <Security/Security.h>
+
+int main(int argc, char **argv) {
+	(void)argc; (void)argv;
+	return 0;
+}
+
+<==
+[1/2] [32mcxx: build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/test.mm -> build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/test.mm.1.o
+[0m
+['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '../test.mm', '-c', '-o', 'test.mm.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/test.mm.1.o -> build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/testprog
+[0m
+['clang++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/testprog', '-framework', 'Security', '-framework', 'Foundation']
+yes
+----------------------------------------
+Checking for program pkg-config
+/opt/local/bin/pkg-config
+find program=['pkg-config'] paths=['/opt/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='PKGCONFIG' -> '/opt/local/bin/pkg-config'
+----------------------------------------
+Checking for 'liblog4cxx'
+['/opt/local/bin/pkg-config', '--cflags', '--libs', 'liblog4cxx']
+out: -I/opt/local/include -L/opt/local/lib -llog4cxx 
+
+yes
+----------------------------------------
+Checking boost includes
+1_53
+----------------------------------------
+Checking boost libs
+Found the boost path in /opt/local/lib with the libraries:
+    /opt/local/lib/libboost_atomic-mt.a
+    /opt/local/lib/libboost_atomic-mt.dylib
+    /opt/local/lib/libboost_chrono-mt.a
+    /opt/local/lib/libboost_chrono-mt.dylib
+    /opt/local/lib/libboost_context-mt.a
+    /opt/local/lib/libboost_context-mt.dylib
+    /opt/local/lib/libboost_date_time-mt.a
+    /opt/local/lib/libboost_date_time-mt.dylib
+    /opt/local/lib/libboost_exception-mt.a
+    /opt/local/lib/libboost_filesystem-mt.a
+    /opt/local/lib/libboost_filesystem-mt.dylib
+    /opt/local/lib/libboost_graph-mt.a
+    /opt/local/lib/libboost_graph-mt.dylib
+    /opt/local/lib/libboost_iostreams-mt.a
+    /opt/local/lib/libboost_iostreams-mt.dylib
+    /opt/local/lib/libboost_locale-mt.a
+    /opt/local/lib/libboost_locale-mt.dylib
+    /opt/local/lib/libboost_math_c99-mt.a
+    /opt/local/lib/libboost_math_c99-mt.dylib
+    /opt/local/lib/libboost_math_c99f-mt.a
+    /opt/local/lib/libboost_math_c99f-mt.dylib
+    /opt/local/lib/libboost_math_c99l-mt.a
+    /opt/local/lib/libboost_math_c99l-mt.dylib
+    /opt/local/lib/libboost_math_tr1-mt.a
+    /opt/local/lib/libboost_math_tr1-mt.dylib
+    /opt/local/lib/libboost_math_tr1f-mt.a
+    /opt/local/lib/libboost_math_tr1f-mt.dylib
+    /opt/local/lib/libboost_math_tr1l-mt.a
+    /opt/local/lib/libboost_math_tr1l-mt.dylib
+    /opt/local/lib/libboost_prg_exec_monitor-mt.a
+    /opt/local/lib/libboost_prg_exec_monitor-mt.dylib
+    /opt/local/lib/libboost_program_options-mt.a
+    /opt/local/lib/libboost_program_options-mt.dylib
+    /opt/local/lib/libboost_python-mt.a
+    /opt/local/lib/libboost_python-mt.dylib
+    /opt/local/lib/libboost_random-mt.a
+    /opt/local/lib/libboost_random-mt.dylib
+    /opt/local/lib/libboost_regex-mt.a
+    /opt/local/lib/libboost_regex-mt.dylib
+    /opt/local/lib/libboost_serialization-mt.a
+    /opt/local/lib/libboost_serialization-mt.dylib
+    /opt/local/lib/libboost_signals-mt.a
+    /opt/local/lib/libboost_signals-mt.dylib
+    /opt/local/lib/libboost_system-mt.a
+    /opt/local/lib/libboost_system-mt.dylib
+    /opt/local/lib/libboost_test_exec_monitor-mt.a
+    /opt/local/lib/libboost_thread-mt.a
+    /opt/local/lib/libboost_thread-mt.dylib
+    /opt/local/lib/libboost_timer-mt.a
+    /opt/local/lib/libboost_timer-mt.dylib
+    /opt/local/lib/libboost_unit_test_framework-mt.a
+    /opt/local/lib/libboost_unit_test_framework-mt.dylib
+    /opt/local/lib/libboost_wave-mt.a
+    /opt/local/lib/libboost_wave-mt.dylib
+    /opt/local/lib/libboost_wserialization-mt.a
+    /opt/local/lib/libboost_wserialization-mt.dylib
+Trying pattern boost_system(-xgcc[0-9]{0,3})+(-1_53)+
+Trying pattern boost_system(-1_53)+
+Trying pattern boost_system(-1_53)+
+Trying pattern boost_system(-xgcc[0-9]{0,3})+
+Trying pattern boost_system
+Found boost lib libboost_system-mt.a
+Trying pattern boost_test(-xgcc[0-9]{0,3})+(-1_53)+
+Trying pattern boost_test(-1_53)+
+Trying pattern boost_test(-1_53)+
+Trying pattern boost_test(-xgcc[0-9]{0,3})+
+Trying pattern boost_test
+Found boost lib libboost_test_exec_monitor-mt.a
+Trying pattern boost_iostreams(-xgcc[0-9]{0,3})+(-1_53)+
+Trying pattern boost_iostreams(-1_53)+
+Trying pattern boost_iostreams(-1_53)+
+Trying pattern boost_iostreams(-xgcc[0-9]{0,3})+
+Trying pattern boost_iostreams
+Found boost lib libboost_iostreams-mt.a
+Trying pattern boost_filesystem(-xgcc[0-9]{0,3})+(-1_53)+
+Trying pattern boost_filesystem(-1_53)+
+Trying pattern boost_filesystem(-1_53)+
+Trying pattern boost_filesystem(-xgcc[0-9]{0,3})+
+Trying pattern boost_filesystem
+Found boost lib libboost_filesystem-mt.a
+Trying pattern boost_thread(-xgcc[0-9]{0,3})+(-1_53)+
+Trying pattern boost_thread(-1_53)+
+Trying pattern boost_thread(-1_53)+
+Trying pattern boost_thread(-xgcc[0-9]{0,3})+
+Trying pattern boost_thread
+Found boost lib libboost_thread-mt.a
+Trying pattern boost_date_time(-xgcc[0-9]{0,3})+(-1_53)+
+Trying pattern boost_date_time(-1_53)+
+Trying pattern boost_date_time(-1_53)+
+Trying pattern boost_date_time(-xgcc[0-9]{0,3})+
+Trying pattern boost_date_time
+Found boost lib libboost_date_time-mt.a
+ok
+----------------------------------------
+Checking for boost linkage
+==>
+#include <boost/system/error_code.hpp>
+int main() { boost::system::error_code c; }
+<==
+[1/2] [32mcxx: build/.conf_check_968fbcee789046a8c143bb4a6e302895/test.cpp -> build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/test.cpp.1.o
+[0m
+['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-I/opt/local/include', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '-DHAVE_SECURITY=1', '-DHAVE_LOG4CXX=1', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/test.cpp.1.o -> build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/testprog', '-L/opt/local/lib', '-lboost_system-mt', '-lboost_test_exec_monitor-mt', '-lboost_iostreams-mt', '-lboost_filesystem-mt', '-lboost_thread-mt', '-lboost_date_time-mt']
+==>
+#include <boost/thread.hpp>
+int main() { boost::thread t; }
+<==
+[1/2] [32mcxx: build/.conf_check_f9432292e9cb949513778706dc8c1baa/test.cpp -> build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/test.cpp.1.o
+[0m
+['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-I/opt/local/include', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '-DHAVE_SECURITY=1', '-DHAVE_LOG4CXX=1', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+[2/2] [33mcxxprogram: build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/test.cpp.1.o -> build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/testprog
+[0m
+['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/testprog', '-L/opt/local/lib', '-lboost_system-mt', '-lboost_test_exec_monitor-mt', '-lboost_iostreams-mt', '-lboost_filesystem-mt', '-lboost_thread-mt', '-lboost_date_time-mt']
+ok
