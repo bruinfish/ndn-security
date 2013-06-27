@@ -88,7 +88,6 @@ keychain::OSX::generateKeyPair (const std::string keyName)
 {
   const void *	keys[] = {
     kSecAttrLabel,
-    kSecAttrIsPermanent,
     kSecAttrKeyType,
     kSecAttrKeySizeInBits,
     kSecAttrApplicationTag
@@ -100,7 +99,6 @@ keychain::OSX::generateKeyPair (const std::string keyName)
   int keySize = 2048;
   const void *	values[] = {
     label,
-    kCFBooleanTrue,
     kSecAttrKeyTypeRSA,
     CFNumberCreate (NULL, kCFNumberIntType, &keySize),
     tag
@@ -157,34 +155,6 @@ keychain::OSX::deleteKeyPair (const std::string keyName)
 void
 keychain::OSX::deletePublicKey (const std::string keyName)
 {
-  const void *	keys[] = {
-    kSecClass,
-    kSecAttrKeyClass,
-    kSecAttrApplicationTag
-  };
-
-  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (keyName.c_str ()), keyName.size ());
-
-  const void *	values[] = {
-    kSecClassKey,
-    kSecAttrKeyClassPublic,
-    tag
-  };
-
-  CFDictionaryRef dict = CFDictionaryCreate (NULL,
-                                             keys, values,
-                                             sizeof(keys) / sizeof(*keys),
-                                             NULL, NULL);
-
-  OSStatus res = errSecSuccess;
-  while (res == errSecSuccess)
-    {
-      res = SecItemDelete (dict);
-      _LOG_DEBUG ("SecItemDelete status: " << res);
-    }
-
-  if (res != errSecItemNotFound)
-    OSX_Private::LogHumanError (res, "Error while deleting public key " + keyName);
 }
 
 void

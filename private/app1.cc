@@ -22,10 +22,10 @@ int main(int argc, char* argv[])
   keychain::OSX * keychain = new keychain::OSX();
 
   string keyName = "/my/private/key1";
-  keychain->generateKeyPair (keyName);
-  // keychain->deleteKeyPair (keyName);
+  // keychain->generateKeyPair (keyName);
+  keychain->deleteKeyPair (keyName);
 
-  keychain->getPublicKey (keyName);
+  // keychain->getPublicKey (keyName);
   // ofstream f ("out.pub");
   // f.write (key->buf (), key->size ());
   // keychain->~OSX ();
