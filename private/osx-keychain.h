@@ -35,6 +35,8 @@ public:
   virtual void signData (const std::string keyName);
 
   virtual void revert ();
+  
+  virtual void checkACL(const std::string keyName);
 
 private:
   void *m_private;

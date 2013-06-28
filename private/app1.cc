@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
 
   string keyName = "/my/private/key2";
   keychain->generateKeyPair (keyName);
+  keychain->checkACL (keyName);
   // keychain->deleteKeyPair (keyName);
 
   // keychain->getPublicKey (keyName);
