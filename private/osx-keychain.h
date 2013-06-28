@@ -32,6 +32,10 @@ public:
 
   virtual void getPublicKey (const std::string keyName);
 
+  virtual void signData (const std::string keyName);
+
+  virtual void revert ();
+
 private:
   void *m_private;
 };

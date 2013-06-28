@@ -13,23 +13,21 @@
 
 #include "osx-keychain.h"
 #include <fstream>
-#include <sys/types.h>
-#include <iostream>
 
 using namespace std;
 
 int main(int argc, char* argv[])
 {
+  //Ptr<Keychain> keychain;
   keychain::OSX * keychain = new keychain::OSX();
 
-  string keyName = "/my/private/key2";
-  keychain->generateKeyPair (keyName);
+  string keyName = "/my/private/key1";
+  // keychain->generateKeyPair (keyName);
   // keychain->deleteKeyPair (keyName);
 
   // keychain->getPublicKey (keyName);
   // ofstream f ("out.pub");
   // f.write (key->buf (), key->size ());
   // keychain->~OSX ();
-  keychain->revert();
 }
 

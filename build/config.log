@@ -1,4 +1,4 @@
-# project ndnsec (0.1) configured on Wed Jun 26 22:43:59 2013 by
+# project ndnsec (0.1) configured on Thu Jun 27 00:47:37 2013 by
 # waf 1.7.11 (abi 98, python 20705f0 on darwin)
 # using ./waf configure
 #
@@ -10,14 +10,14 @@ Setting out to
 /Users/yuyingdi/Develop/ndn-security/build
 ----------------------------------------
 Checking for 'gcc' (c compiler)
-find program=['gcc', 'cc'] paths=['/opt/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='CC' -> '/usr/bin/gcc'
-find program=['ar'] paths=['/opt/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='AR' -> '/opt/local/bin/ar'
+find program=['gcc', 'cc'] paths=['/opt/local/bin', '/opt/local/sbin', '/opt/local/bin', '/opt/local/sbin', '/opt/local/libexec/gnubin/', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='CC' -> '/usr/bin/gcc'
+find program=['ar'] paths=['/opt/local/bin', '/opt/local/sbin', '/opt/local/bin', '/opt/local/sbin', '/opt/local/libexec/gnubin/', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='AR' -> '/opt/local/bin/ar'
 /usr/bin/gcc
 ----------------------------------------
 Checking for 'g++' (c++ compiler)
-find program=['g++', 'c++'] paths='' var='CXX' -> 'clang++'
+find program=['g++', 'c++'] paths=['/opt/local/bin', '/opt/local/sbin', '/opt/local/bin', '/opt/local/sbin', '/opt/local/libexec/gnubin/', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='CXX' -> '/usr/bin/g++'
 (tool ar is already loaded, skipping)
-clang++
+/usr/bin/g++
 ----------------------------------------
 Checking allowed flags for c++ compiler
 ==>
@@ -30,10 +30,10 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/test.cpp -> build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/test.cpp.1.o
 [0m
-['clang++', '-O0', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-O0', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/test.cpp.1.o -> build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/testprog']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_6fbe4262acc4dfd087a637268b2dd6ee/testbuild/testprog']
 ==>
 
 int main(int argc, char **argv) {
@@ -44,10 +44,10 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_7315e1822a0aba000ae9bcd58f617545/test.cpp -> build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/test.cpp.1.o
 [0m
-['clang++', '-Wall', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-Wall', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/test.cpp.1.o -> build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/testprog']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_7315e1822a0aba000ae9bcd58f617545/testbuild/testprog']
 ==>
 
 int main(int argc, char **argv) {
@@ -58,10 +58,10 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/test.cpp -> build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/test.cpp.1.o
 [0m
-['clang++', '-Wno-unused-variable', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-Wno-unused-variable', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/test.cpp.1.o -> build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/testprog']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_18b859aa4bf0c5c3590d242c1a3a6f00/testbuild/testprog']
 ==>
 
 int main(int argc, char **argv) {
@@ -72,10 +72,10 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_c9979a261594412ace7b7eb669820666/test.cpp -> build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/test.cpp.1.o
 [0m
-['clang++', '-g3', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-g3', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/test.cpp.1.o -> build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/testprog']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_c9979a261594412ace7b7eb669820666/testbuild/testprog']
 ==>
 
 int main(int argc, char **argv) {
@@ -86,10 +86,20 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_1f1c317658a7d162e5daca15373be461/test.cpp -> build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/test.cpp.1.o
 [0m
-['clang++', '-Wno-unused-private-field', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
-[2/2] [33mcxxprogram: build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/test.cpp.1.o -> build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/testprog
-[0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_1f1c317658a7d162e5daca15373be461/testbuild/testprog']
+['/usr/bin/g++', '-Wno-unused-private-field', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+err: cc1plus: error: unrecognized command line option "-Wno-unused-private-field"
+
+from /Users/yuyingdi/Develop/ndn-security: Test does not build: Traceback (most recent call last):
+  File "/Users/yuyingdi/Develop/ndn-security/.waf-1.7.11-744b15ac9f6861e7d8c247c851598a7d/waflib/Tools/c_config.py", line 459, in run_c_code
+    bld.compile()
+  File "/Users/yuyingdi/Develop/ndn-security/.waf-1.7.11-744b15ac9f6861e7d8c247c851598a7d/waflib/Build.py", line 188, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed (exit status 1): 
+	{task 4367284496: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-Wno-unused-private-field', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+
+from /Users/yuyingdi/Develop/ndn-security: The configuration failed
 ==>
 
 int main(int argc, char **argv) {
@@ -100,10 +110,20 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/test.cpp -> build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/test.cpp.1.o
 [0m
-['clang++', '-fcolor-diagnostics', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
-[2/2] [33mcxxprogram: build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/test.cpp.1.o -> build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/testprog
-[0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_6d6d64f579ed9b762dd96512d496efa0/testbuild/testprog']
+['/usr/bin/g++', '-fcolor-diagnostics', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+err: cc1plus: error: unrecognized command line option "-fcolor-diagnostics"
+
+from /Users/yuyingdi/Develop/ndn-security: Test does not build: Traceback (most recent call last):
+  File "/Users/yuyingdi/Develop/ndn-security/.waf-1.7.11-744b15ac9f6861e7d8c247c851598a7d/waflib/Tools/c_config.py", line 459, in run_c_code
+    bld.compile()
+  File "/Users/yuyingdi/Develop/ndn-security/.waf-1.7.11-744b15ac9f6861e7d8c247c851598a7d/waflib/Build.py", line 188, in compile
+    raise Errors.BuildError(self.producer.error)
+BuildError: Build failed
+ -> task in 'testprog' failed (exit status 1): 
+	{task 4367283280: cxx test.cpp -> test.cpp.1.o}
+['/usr/bin/g++', '-fcolor-diagnostics', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+
+from /Users/yuyingdi/Develop/ndn-security: The configuration failed
 ==>
 
 int main(int argc, char **argv) {
@@ -114,11 +134,11 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/test.cpp -> build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/test.cpp.1.o
 [0m
-['clang++', '-Qunused-arguments', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-Qunused-arguments', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/test.cpp.1.o -> build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/testprog']
--O0 -Wall -Wno-unused-variable -g3 -Wno-unused-private-field -fcolor-diagnostics -Qunused-arguments
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_4f0476ef17577bb6d00a469e439c0f06/testbuild/testprog']
+-O0 -Wall -Wno-unused-variable -g3 -Qunused-arguments
 ----------------------------------------
 Checking for framework Foundation
 ==>
@@ -132,10 +152,10 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/test.mm -> build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/test.mm.1.o
 [0m
-['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '../test.mm', '-c', '-o', 'test.mm.1.o']
+['/usr/bin/g++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Qunused-arguments', '../test.mm', '-c', '-o', 'test.mm.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/test.mm.1.o -> build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/testprog
 [0m
-['clang++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/testprog', '-framework', 'Foundation']
+['/usr/bin/g++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_91ceda8fda663fe5a6cf36436eb88682/testbuild/testprog', '-framework', 'Foundation']
 yes
 ----------------------------------------
 Checking for framework AppKit
@@ -150,10 +170,10 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/test.mm -> build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/test.mm.1.o
 [0m
-['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '../test.mm', '-c', '-o', 'test.mm.1.o']
+['/usr/bin/g++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Qunused-arguments', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '../test.mm', '-c', '-o', 'test.mm.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/test.mm.1.o -> build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/testprog
 [0m
-['clang++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/testprog', '-framework', 'AppKit']
+['/usr/bin/g++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_ffc534dfe2ea1c379f4e37f128f82169/testbuild/testprog', '-framework', 'AppKit']
 yes
 ----------------------------------------
 Checking for framework Security
@@ -168,15 +188,15 @@ int main(int argc, char **argv) {
 <==
 [1/2] [32mcxx: build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/test.mm -> build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/test.mm.1.o
 [0m
-['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '../test.mm', '-c', '-o', 'test.mm.1.o']
+['/usr/bin/g++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Qunused-arguments', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '../test.mm', '-c', '-o', 'test.mm.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/test.mm.1.o -> build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/testprog
 [0m
-['clang++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/testprog', '-framework', 'Security', '-framework', 'Foundation']
+['/usr/bin/g++', 'test.mm.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_5eca5debcf3e0a72abd753361ebaa7ac/testbuild/testprog', '-framework', 'Security', '-framework', 'Foundation']
 yes
 ----------------------------------------
 Checking for program pkg-config
 /opt/local/bin/pkg-config
-find program=['pkg-config'] paths=['/opt/local/bin', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='PKGCONFIG' -> '/opt/local/bin/pkg-config'
+find program=['pkg-config'] paths=['/opt/local/bin', '/opt/local/sbin', '/opt/local/bin', '/opt/local/sbin', '/opt/local/libexec/gnubin/', '/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin', '/opt/X11/bin'] var='PKGCONFIG' -> '/opt/local/bin/pkg-config'
 ----------------------------------------
 Checking for 'liblog4cxx'
 ['/opt/local/bin/pkg-config', '--cflags', '--libs', 'liblog4cxx']
@@ -290,18 +310,18 @@ int main() { boost::system::error_code c; }
 <==
 [1/2] [32mcxx: build/.conf_check_968fbcee789046a8c143bb4a6e302895/test.cpp -> build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/test.cpp.1.o
 [0m
-['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-I/opt/local/include', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '-DHAVE_SECURITY=1', '-DHAVE_LOG4CXX=1', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Qunused-arguments', '-I/opt/local/include', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '-DHAVE_SECURITY=1', '-DHAVE_LOG4CXX=1', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/test.cpp.1.o -> build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/testprog', '-L/opt/local/lib', '-lboost_system-mt', '-lboost_test_exec_monitor-mt', '-lboost_iostreams-mt', '-lboost_filesystem-mt', '-lboost_thread-mt', '-lboost_date_time-mt']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_968fbcee789046a8c143bb4a6e302895/testbuild/testprog', '-L/opt/local/lib', '-lboost_system-mt', '-lboost_test_exec_monitor-mt', '-lboost_iostreams-mt', '-lboost_filesystem-mt', '-lboost_thread-mt', '-lboost_date_time-mt']
 ==>
 #include <boost/thread.hpp>
 int main() { boost::thread t; }
 <==
 [1/2] [32mcxx: build/.conf_check_f9432292e9cb949513778706dc8c1baa/test.cpp -> build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/test.cpp.1.o
 [0m
-['clang++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Wno-unused-private-field', '-fcolor-diagnostics', '-Qunused-arguments', '-I/opt/local/include', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '-DHAVE_SECURITY=1', '-DHAVE_LOG4CXX=1', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
+['/usr/bin/g++', '-O0', '-Wall', '-Wno-unused-variable', '-g3', '-Qunused-arguments', '-I/opt/local/include', '-DHAVE_FOUNDATION_FOUNDATION_H=1', '-DHAVE_APPKIT_APPKIT_H=1', '-DHAVE_SECURITY=1', '-DHAVE_LOG4CXX=1', '../test.cpp', '-c', '-o', 'test.cpp.1.o']
 [2/2] [33mcxxprogram: build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/test.cpp.1.o -> build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/testprog
 [0m
-['clang++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/testprog', '-L/opt/local/lib', '-lboost_system-mt', '-lboost_test_exec_monitor-mt', '-lboost_iostreams-mt', '-lboost_filesystem-mt', '-lboost_thread-mt', '-lboost_date_time-mt']
+['/usr/bin/g++', 'test.cpp.1.o', '-o', '/Users/yuyingdi/Develop/ndn-security/build/.conf_check_f9432292e9cb949513778706dc8c1baa/testbuild/testprog', '-L/opt/local/lib', '-lboost_system-mt', '-lboost_test_exec_monitor-mt', '-lboost_iostreams-mt', '-lboost_filesystem-mt', '-lboost_thread-mt', '-lboost_date_time-mt']
 ok

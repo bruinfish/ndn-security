@@ -13,6 +13,7 @@
 #include "logging.h"
 
 #include <Foundation/Foundation.h>
+//#include <CoreFoundation/CoreFoundation.h>
 #include <AppKit/AppKit.h>
 #include <Security/Security.h>
 
@@ -29,7 +30,7 @@ public:
     CFStringRef errMsgPtr = SecCopyErrorMessageString (res, NULL);
     char errMsg[1024];
     CFStringGetCString (errMsgPtr, errMsg, 1024, kCFStringEncodingUTF8);
-    _LOG_DEBUG ("Open status: " << errMsg);
+    _LOG_DEBUG ("LogHumanError Open status: " << errMsg);
 
   }
 
@@ -75,8 +76,23 @@ keychain::OSX::OSX ()
 keychain::OSX::~OSX ()
 {
   OSX_Private *self = reinterpret_cast<OSX_Private*> (m_private);
-
+  
   SecKeychainSetDefault (self->m_origDefaultKeychain);
+
+  CFRelease (self->m_keychain);
+  CFRelease (self->m_origDefaultKeychain);
+  delete self;
+}
+
+void 
+keychain::OSX::revert ()
+{
+  OSX_Private *self = reinterpret_cast<OSX_Private*> (m_private);
+  SecKeychainOpen ("login.keychain",
+                   &self->m_origDefaultKeychain);
+  OSStatus res = SecKeychainSetDefault (self->m_origDefaultKeychain);
+  
+  _LOG_DEBUG("set Default: "<< res);
 
   CFRelease (self->m_keychain);
   CFRelease (self->m_origDefaultKeychain);
@@ -86,6 +102,13 @@ keychain::OSX::~OSX ()
 void
 keychain::OSX::generateKeyPair (const std::string keyName)
 {
+  generateTmpKeyPair(keyName);
+  setPublicKey(keyName);
+}
+
+void
+keychain::OSX::generateTmpKeyPair (const std::string keyName)
+{
   const void *	keys[] = {
     kSecAttrLabel,
     kSecAttrKeyType,
@@ -93,8 +116,8 @@ keychain::OSX::generateKeyPair (const std::string keyName)
     kSecAttrApplicationTag
   };
 
-  CFStringRef label = CFStringCreateWithCString (NULL, keyName.c_str (), kCFStringEncodingUTF8);
-  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (keyName.c_str ()), keyName.size ());
+  CFStringRef label = CFStringCreateWithCString (NULL, ("/tmp/" + keyName).c_str (), kCFStringEncodingUTF8);
+  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (("/tmp/" + keyName).c_str ()), keyName.size ());
   
   int keySize = 2048;
   const void *	values[] = {
@@ -119,6 +142,84 @@ keychain::OSX::generateKeyPair (const std::string keyName)
 
   CFRelease (publicKey);
   CFRelease (privateKey);
+}
+
+void
+keychain::OSX::setPublicKey(const std::string keyName)
+{
+  const void *	keys[] = {
+    kSecClass,
+    kSecAttrKeyType,
+    kSecAttrKeyClass,
+    kSecAttrApplicationTag,
+    kSecReturnData
+  };
+
+  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (("/tmp/"+keyName).c_str ()), keyName.size ());
+
+  const void *	values[] = {
+    kSecClassKey,
+    kSecAttrKeyTypeRSA,
+    kSecAttrKeyClassPublic,
+    tag,
+    kCFBooleanTrue
+  };
+
+  CFDictionaryRef query = CFDictionaryCreate (NULL,
+                                              keys, values,
+                                              sizeof(keys) / sizeof(*keys),
+                                              NULL, NULL);
+
+  CFDataRef publicKey;
+  OSStatus res = SecItemCopyMatching (query, (CFTypeRef *)(&publicKey));
+  if (res != errSecSuccess)
+    OSX_Private::LogHumanError (res, "Cannot find public key " + keyName);
+
+  _LOG_DEBUG ("Copy Status: " << res);
+  _LOG_DEBUG ("REFs: " << CFDataGetLength(publicKey));
+
+
+  //Create Access
+  SecAccessRef itemAccess = nil;
+  SecTrustedApplicationRef trustedAppArray[1];
+  SecTrustedApplicationRef trustedApp;
+
+  CFStringRef descriptor = CFStringCreateWithCString(NULL, keyName.c_str(), kCFStringEncodingUTF8);
+
+  OSStatus res2 = SecTrustedApplicationCreateFromPath (NULL, &trustedApp);
+  trustedAppArray[0] = trustedApp;
+  CFArrayRef newTrustedAppArray = CFArrayCreate (NULL,
+                                                 (const void **)trustedAppArray, 1,
+                                                 &kCFTypeArrayCallBacks);
+
+  OSStatus res3 = SecAccessCreate (descriptor, newTrustedAppArray, &itemAccess);
+
+  //Create PublicKeyItem attributes
+  SecKeychainAttribute pub_attrs[] = {
+     { kSecKeyPrintName, keyName.size(), (char *)keyName.c_str() },
+//     { kSecKeyKeyClass, sizeof(uint32), (new uint32(CSSM_KEYCLASS_PUBLIC_KEY))},
+//     { kSecKeyPermanent, sizeof(uint32), (new uint32(1))},
+//     { kSecKeyKeyType, sizeof(uint32), (new uint32(CSSM_ALGID_RSA))},
+//     { kSecKeyKeySizeInBits, sizeof(uint32), (new uint32(2048))}
+  };
+  SecKeychainAttributeList attributes = { sizeof(pub_attrs) / sizeof(pub_attrs[0]),
+                                          pub_attrs };
+
+  //Create PublicKeyItem with Access
+  SecKeychainItemRef pubKeyItem = nil;
+  OSStatus res4 = SecKeychainItemCreateFromContent(kSecPublicKeyItemClass,
+                                                   &attributes,
+                                                   CFDataGetLength(publicKey),
+                                                   CFDataGetBytePtr(publicKey),
+                                                   NULL, // use the default keychain
+                                                   itemAccess,
+                                                   &pubKeyItem);
+  _LOG_DEBUG ("Create: " << res4);
+}
+
+void 
+keychain::OSX::setPrivateKey (const std::string keyName)
+{
 }
 
 void
@@ -185,7 +286,8 @@ keychain::OSX::getPublicKey (const std::string keyName)
 
   //  NSData* publicKey;
   // OSStatus res = SecItemCopyMatching (query, (CFTypeRef *)(&publicKey));
-  SecKeyRef* pubkeyRef;
+  //  SecKeyRef* pubkeyRef;
+  SecKeychainItemRef* pubkeyRef;
   OSStatus res = SecItemCopyMatching (query, (CFTypeRef *)(&pubkeyRef));
   if (res != errSecSuccess)
     OSX_Private::LogHumanError (res, "Cannot find public key " + keyName);
@@ -203,12 +305,27 @@ keychain::OSX::getPublicKey (const std::string keyName)
                                 kSecItemPemArmour,
                                 NULL,
                                 (CFDataRef *)(&publicKey));
-                                
-  _LOG_DEBUG ("Key size: " << [publicKey length]);
+
+  _LOG_DEBUG ("Key size: " << (const char*)[publicKey bytes]);
 
 }
 
+void 
+keychain::OSX::setACL (const std::string keyName)
+{
+//   SecACLRef newAcl;
+//   OSStatus res5 = SecACLCreateWithSimpleContents (itemAccess,
+//                                                   newTrustedAppArray,
+//                                                   descriptor,
+//                                                   kSecKeychainPromptUnsignedAct,
+//                                                   &newAcl);
 
+}
+
+void
+keychain::OSX::signData (const std::string keyName)
+{
+}
 
 /// @todo Release data structures after use
 

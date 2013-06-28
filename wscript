@@ -38,7 +38,17 @@ def build(bld):
         target = 'app1',
         features = "cxx cxxprogram",
         defines = "WAF",
-        source = bld.path.ant_glob(['private/*.cc', 'private/*.mm']),
+        source = bld.path.ant_glob(['private/app1.cc', 'private/*.mm']),
+        use = 'BOOST_TEST BOOST_FILESYSTEM BOOST_DATE_TIME LOG4CXX OSX_FOUNDATION OSX_SECURITY',
+        includes = ".",
+        install_prefix = None,
+        )
+
+    bld.program(
+        target = 'app2',
+        features = "cxx cxxprogram",
+        defines = "WAF",
+        source = bld.path.ant_glob(['private/app2.cc', 'private/*.mm']),
         use = 'BOOST_TEST BOOST_FILESYSTEM BOOST_DATE_TIME LOG4CXX OSX_FOUNDATION OSX_SECURITY',
         includes = ".",
         install_prefix = None,
