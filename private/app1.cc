@@ -24,7 +24,18 @@ int main(int argc, char* argv[])
 
   string keyName = "/my/private/key2";
   keychain->generateKeyPair (keyName);
-  keychain->checkACL (keyName);
+  // keychain->checkACL (keyName);
+
+  CFStringRef stringRef = CFStringCreateWithCString(NULL, "test", kCFStringEncodingUTF8);
+  CFDataRef dataRef = CFStringCreateExternalRepresentation(NULL,
+                                                           stringRef,
+                                                           kCFStringEncodingUTF8,
+                                                           0);
+
+  keychain->signData (keyName, dataRef);
+  // keychain->verifyData (keyName, dataRef, signature);
+
+
   // keychain->deleteKeyPair (keyName);
 
   // keychain->getPublicKey (keyName);

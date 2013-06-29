@@ -9,9 +9,11 @@
  *         Yingdi Yu <yingdi@cs.ucla.edu>
  */
 
+
 #ifndef NDN_KEYCHAIN_OSX_H
 #define NDN_KEYCHAIN_OSX_H
 
+#include<CoreFoundation/CoreFoundation.h>
 #include<string>
 
 namespace keychain {
@@ -32,7 +34,9 @@ public:
 
   virtual void getPublicKey (const std::string keyName);
 
-  virtual void signData (const std::string keyName);
+  virtual bool signData (const std::string keyName, CFDataRef data);
+
+  virtual bool verifyData (const std::string keyName, CFDataRef data, CFDataRef signature);
 
   virtual void revert ();
   

@@ -30,7 +30,7 @@ public:
     CFStringRef errMsgPtr = SecCopyErrorMessageString (res, NULL);
     char errMsg[1024];
     CFStringGetCString (errMsgPtr, errMsg, 1024, kCFStringEncodingUTF8);
-    _LOG_DEBUG ("LogHumanError Open status: " << errMsg);
+    _LOG_DEBUG ("LogHumanError Open status: " << errMsgStr << errMsg);
 
   }
 
@@ -265,81 +265,54 @@ keychain::OSX::getPublicKey (const std::string keyName)
 
 }
 
-void
-keychain::OSX::signData (const std::string keyName)
+bool
+keychain::OSX::signData (const std::string keyName, CFDataRef dataRef)
 {
-}
-
-void 
-keychain::OSX::checkACL(const std::string keyName)
-{
-  const void *  keys[] = {
+  const void* keys [] = {
     kSecClass,
     kSecAttrKeyType,
     kSecAttrKeyClass,
-    kSecAttrApplicationTag
+    kSecAttrApplicationTag,
+    kSecReturnRef
   };
+  
+  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (keyName.c_str()), keyName.size());
 
-  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (keyName.c_str ()), keyName.size ());
-
-  const void *  values[] = {
+  const void* values[] = {
     kSecClassKey,
     kSecAttrKeyTypeRSA,
     kSecAttrKeyClassPrivate,
-    tag
+    tag,
+    kCFBooleanTrue
   };
 
   CFDictionaryRef query = CFDictionaryCreate (NULL,
                                               keys, values,
                                               sizeof(keys) / sizeof(*keys),
-                                              &kCFTypeDictionaryKeyCallBacks, NULL);
+                                              &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
 
-
-
-//   SecTrustedApplicationRef trustedApps[3];
+  SecKeychainItemRef privateKey;
+  OSStatus res = SecItemCopyMatching(query, (CFTypeRef *) &privateKey);
   
-//   OSStatus app_res;
-//   app_res = SecTrustedApplicationCreateFromPath ("/Users/yuyingdi/Develop/ndn-security/build/app1",
-//                                                           &(trustedApps[0]));
-//   _LOG_DEBUG("create app1: " << app_res);
+  _LOG_DEBUG("getPrivateKey: " << res);
 
-//   app_res = SecTrustedApplicationCreateFromPath ("/Users/yuyingdi/Develop/ndn-security/build/app2",
-//                                                  &(trustedApps[1]));
-//   _LOG_DEBUG("create app2: " << app_res);
+  CFErrorRef error;
+  SecTransformRef signer = SecSignTransformCreate((SecKeyRef)privateKey, &error);
+  if (error) { CFShow(error); exit(-1); }
 
-// //   app_res = SecTrustedApplicationCreateFromPath ("/Users/yuyingdi/Develop/ndn-security/waf",
-// //                                                 &(trustedApps[0]));
-
-//   CFArrayRef applicationList  = CFArrayCreate (NULL,
-//                                                (const void **)trustedApps, 
-//                                                1,
-//                                                &kCFTypeArrayCallBacks);
+  Boolean set_res = SecTransformSetAttribute(signer, 
+                                               kSecTransformInputAttributeName,
+                                               dataRef,
+                                               &error);
+  if (error) { CFShow(error); exit(-1); }
   
-//   SecAccessRef accessRef;
-//   OSStatus acc_res = SecAccessCreate(CFStringCreateWithCString (NULL, ("/new"+ keyName).c_str (), kCFStringEncodingUTF8),
-//                                      applicationList,
-//                                      &accessRef);
-
-//   _LOG_DEBUG("create access: " << acc_res);
-
-//   const void *  update_keys[] = {
-//     kSecAttrAccess
-//   };
-
-//   const void *  update_values[] = {
-//     accessRef
-//   };
-
-//   CFDictionaryRef update = CFDictionaryCreate (NULL,
-//                                                update_keys, update_values,
-//                                                1,
-//                                                &kCFTypeDictionaryKeyCallBacks, NULL);
-
-//   OSStatus res;
-
-//   res = SecItemUpdate (query, update);
-
-//   _LOG_DEBUG("update: " << res);
+  CFDataRef signature = (CFDataRef) SecTransformExecute(signer, &error);
+  if (error) { CFShow(error); exit(-1); }
+ 
+  if (!signature) {
+    fprintf(stderr, "Signature is NULL!\n");
+    exit(-1);
+  }
 
 
   const void *  attr_keys[] = {
@@ -349,6 +322,69 @@ keychain::OSX::checkACL(const std::string keyName)
     kSecAttrApplicationTag,
     kSecReturnRef,
   };
+
+  const void *  attr_values[] = {
+    kSecClassKey,
+    kSecAttrKeyTypeRSA,
+    kSecAttrKeyClassPublic,
+    tag,
+    kCFBooleanTrue
+  };
+
+  CFDictionaryRef attr_query = CFDictionaryCreate (NULL,
+                                              attr_keys, attr_values,
+                                              sizeof(attr_keys) / sizeof(*attr_keys),
+                                              &kCFTypeDictionaryKeyCallBacks, &kCFTypeDictionaryValueCallBacks);
+
+  SecKeychainItemRef publicKey;
+  res = SecItemCopyMatching(attr_query, (CFTypeRef *)&publicKey);
+
+  if (res != errSecSuccess)
+    OSX_Private::LogHumanError (res, "Cannot find public key " + keyName);
+
+  _LOG_DEBUG("Find public Key");
+
+  SecTransformRef verifier = SecVerifyTransformCreate((SecKeyRef)publicKey, signature, &error);
+
+  _LOG_DEBUG("Set verifier");
+
+  set_res = SecTransformSetAttribute(verifier,
+                                     kSecTransformInputAttributeName,
+                                     dataRef,
+                                     &error);
+  if (error) { CFShow(error); exit(-1); }
+
+  CFTypeRef result = SecTransformExecute(verifier, &error);
+  if (error) { CFShow(error); exit(-1); }
+
+  if (result == kCFBooleanTrue) {
+    _LOG_DEBUG("Verification Succeed!");
+    return true;
+  } else {
+    return ("Verification Fail!");
+    return false;
+  }
+}
+
+
+bool
+keychain::OSX::verifyData(const std::string keyName, CFDataRef dataRef, CFDataRef signature)
+{
+  return false;
+}
+
+void 
+keychain::OSX::checkACL(const std::string keyName)
+{
+  const void *  attr_keys[] = {
+    kSecClass,
+    kSecAttrKeyType,
+    kSecAttrKeyClass,
+    kSecAttrApplicationTag,
+    kSecReturnRef,
+  };
+
+  CFDataRef tag = CFDataCreate (NULL, reinterpret_cast<const unsigned char *> (keyName.c_str()), keyName.size());
 
   const void *  attr_values[] = {
     kSecClassKey,
