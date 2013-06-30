@@ -242,7 +242,7 @@ keychain::OSX::getPublicKey (const std::string keyName)
   //  NSData* publicKey;
   // OSStatus res = SecItemCopyMatching (query, (CFTypeRef *)(&publicKey));
   //  SecKeyRef* pubkeyRef;
-  SecKeychainItemRef* pubkeyRef;
+  SecKeychainItemRef pubkeyRef;
   OSStatus res = SecItemCopyMatching (query, (CFTypeRef *)(&pubkeyRef));
   if (res != errSecSuccess)
     OSX_Private::LogHumanError (res, "Cannot find public key " + keyName);

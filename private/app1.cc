@@ -20,19 +20,19 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-  keychain::OSX * keychain = new keychain::OSX();
+  // keychain::OSX * keychain = new keychain::OSX();
 
-  string keyName = "/my/private/key2";
-  keychain->generateKeyPair (keyName);
+  // string keyName = "/my/private/key2";
+  // keychain->generateKeyPair (keyName);
   // keychain->checkACL (keyName);
 
-  CFStringRef stringRef = CFStringCreateWithCString(NULL, "test", kCFStringEncodingUTF8);
-  CFDataRef dataRef = CFStringCreateExternalRepresentation(NULL,
+  // CFStringRef stringRef = CFStringCreateWithCString(NULL, "test", kCFStringEncodingUTF8);
+  // CFDataRef dataRef = CFStringCreateExternalRepresentation(NULL,
                                                            stringRef,
                                                            kCFStringEncodingUTF8,
                                                            0);
 
-  keychain->signData (keyName, dataRef);
+  // keychain->signData (keyName, dataRef);
   // keychain->verifyData (keyName, dataRef, signature);
 
 
@@ -42,6 +42,6 @@ int main(int argc, char* argv[])
   // ofstream f ("out.pub");
   // f.write (key->buf (), key->size ());
   // keychain->~OSX ();
-  keychain->revert();
+  // keychain->revert();
 }
 
