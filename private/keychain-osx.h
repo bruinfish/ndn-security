@@ -27,11 +27,11 @@ namespace keychain{
 
     ~KeychainOSX();
 
-    CFDataRef getKeyType(int);
+    CFDataRef GetKeyType(int);
 
-    CFDataRef getKeyClass(int);
+    CFDataRef GetKeyClass(int);
 
-    bool setACL(string keyName, int keyType);
+    bool SetACL(string keyName, int keyType);
 
   private:
     SecKeychainRef m_keychainRef;

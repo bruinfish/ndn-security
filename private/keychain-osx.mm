@@ -49,7 +49,7 @@ namespace keychain{
     //TODO: implement
   }
 
-  bool KeychainOSX::nameUsed(string keyName){
+  bool KeychainOSX::NameUsed(string keyName){
     CFDataRef keyTag = CFDataCreate (NULL,
                                      reinterpret_cast<const unsigned char *> (keyName.c_str ()),
                                      keyName.size ());
@@ -76,7 +76,7 @@ namespace keychain{
     return true;
   }
 
-  PubKeyPtr KeychainOSX::generateKeyPair(string keyName,
+  PubKeyPtr KeychainOSX::GenerateKeyPair(string keyName,
                                          int keyType,
                                          int keySize){
     if(nameUsed(keyName)){
@@ -129,7 +129,7 @@ namespace keychain{
     CFRelease (privateKey);
   }
 
-  void * KeychainOSX::fetchKey(string keyName, int keyType, int keyClass){
+  void * KeychainOSX::FetchKey(string keyName, int keyType, int keyClass){
 
     CFDataRef keyTag = CFDataCreate (NULL, 
                                      reinterpret_cast<const unsigned char *> (keyName.c_str ()), 
@@ -187,7 +187,7 @@ namespace keychain{
 
     return outputPtr;
   }
-  bool KeychainOSX::deleteKeyPair(string keyName, int keyType, BytePtr keyLabel){
+  bool KeychainOSX::DeleteKeyPair(string keyName, int keyType, BytePtr keyLabel){
     CFMutableDictionaryRef attrDict = CFDictionaryCreateMutable(NULL,
                                                                 0,
                                                                 kCFTypeDictionaryKeyCallBacks,
@@ -204,7 +204,7 @@ namespace keychain{
       return false;
   }
 
-  BytesPtr KeychainOSX::signData(int keyName, int keyType, BytePtr data){
+  BytesPtr KeychainOSX::SignData(int keyName, int keyType, BytePtr data){
     //TODO: convert data to dataRef
     CFDataRef dataRef = NULL;
 
@@ -234,11 +234,11 @@ namespace keychain{
     return sigPtr;
   }
 
-  BytesPtr KeychainOSX::decryptData(int keyName, int keyType, BytePtr data){
+  BytesPtr KeychainOSX::DecryptData(int keyName, int keyType, BytePtr data){
     //TODO: implemenet
   }
 
-  bool KeychainOSX::setACL(int keyName, int keyType, const char * appPath){
+  bool KeychainOSX::SetACL(int keyName, int keyType, const char * appPath){
     SecKeychainItemRef privateKey = (SecKeychainItemRef) fetchKey(keyName, keyType, KeychainConstant.KEY_CLASS_PRIVATE);
     
     SecAccessRef accRef;
@@ -283,7 +283,7 @@ namespace keychain{
     acc_res = SecKeychainItemSetAccess(privateKey, accRef);
   }
 
-  CFDataRef KeychainOSX::getKeyType(int keyType){
+  CFDataRef KeychainOSX::GetKeyType(int keyType){
     switch(keyType){
     case KeychainConstant.KEY_TYPE_RSA:
       return kSecAttrKeyTypeRSA;
@@ -293,7 +293,7 @@ namespace keychain{
     }
   }
 
-  CFDataRef KeychainOSX::getKeyClass(int keyClass){
+  CFDataRef KeychainOSX::GetKeyClass(int keyClass){
     switch(keyClass){
     case KeychainConstant.KEY_CLASS_PRIVATE:
       return kSecAttrKeyClassPrivate;

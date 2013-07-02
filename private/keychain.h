@@ -26,19 +26,19 @@ namespace keychain {
     
     ~Keychain();
 
-    virtual PubKeyPtr generateKeyPair(string keyName) = 0;
+    virtual PubKeyPtr GenerateKeyPair(string keyName) = 0;
     
-    virtual bool nameUsed(string keyName) = 0;
+    virtual bool NameUsed(string keyName) = 0;
 
-    virtual void * fetchKey(string keyName, int keyType) = 0;
+    virtual void * FetchKey(string keyName, int keyType) = 0;
 
-    virtual BytesPtr exportPublicKeyBits(string keyName, int keyType, bool pem) = 0;
+    virtual BytesPtr ExportPublicKeyBits(string keyName, int keyType, bool pem) = 0;
 
-    virtual bool deleteKeyPair(string keyName) = 0;
+    virtual bool DeleteKeyPair(string keyName) = 0;
 
-    virtual BytesPtr signData(string keyName) = 0;
+    virtual BytesPtr SignData(string keyName) = 0;
     
-    virtual BytesPtr decryptData(string keyName) = 0;
+    virtual BytesPtr DecryptData(string keyName) = 0;
 
     //TODO Symmetrical key stuff.
 
