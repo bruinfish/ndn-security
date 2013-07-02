@@ -25,13 +25,14 @@ namespace keychain{
   public:
     KeychainOSX(string keychainName = NULL);
 
-    ~KeychainOSX();
+    virtual ~KeychainOSX();
 
     CFDataRef GetKeyType(int);
 
     CFDataRef GetKeyClass(int);
 
     bool SetACL(string keyName, int keyType);
+
 
   private:
     SecKeychainRef m_keychainRef;

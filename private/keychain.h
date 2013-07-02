@@ -24,7 +24,7 @@ namespace keychain {
   public:
     Keychain(string keychainName = NULL) {m_keychainName = keychainName;}
     
-    ~Keychain();
+    virtual ~Keychain();
 
     virtual PubKeyPtr GenerateKeyPair(string keyName) = 0;
     
